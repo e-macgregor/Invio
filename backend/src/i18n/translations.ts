@@ -2,6 +2,7 @@ import enRaw from "./locales/en.json" with { type: "json" };
 import nlRaw from "./locales/nl.json" with { type: "json" };
 import deRaw from "./locales/de.json" with { type: "json" };
 import ptBrRaw from "./locales/pt-br.json" with { type: "json" };
+import trRaw from "./locales/tr.json" with { type: "json" };
 
 export type InvoiceLabels = {
   invoiceTitle: string;
@@ -104,6 +105,7 @@ const catalogs: Record<string, InvoiceLabels> = Object.freeze({
   de: coerceLabels("de", deRaw),
   "pt-br": coerceLabels("pt-br", ptBrRaw),
   pt: coerceLabels("pt", ptBrRaw), // alias for pt-br
+  tr: coerceLabels("tr", trRaw),
 });
 
 function normalizeLocale(locale?: string): string {
