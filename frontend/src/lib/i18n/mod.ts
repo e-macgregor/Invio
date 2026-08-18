@@ -3,6 +3,7 @@ import nlMessages from "./locales/nl.json" with { type: "json" };
 import deMessages from "./locales/de.json" with { type: "json" };
 import ptMessages from "./locales/pt-br.json" with { type: "json" };
 import trMessages from "./locales/tr.json" with { type: "json" };
+import esMessages from "./locales/es-co.json" with { type: "json" };
 
 export type UiMessages = Record<string, string>;
 export type TranslateParams = Record<string, string | number>;
@@ -13,6 +14,7 @@ const catalogs: Record<string, UiMessages> = {
   de: deMessages as UiMessages,
   pt: ptMessages as UiMessages,
   tr: trMessages as UiMessages,
+  es: esMessages as UiMessages,
 };
 
 const DEFAULT_LOCALE = "en";

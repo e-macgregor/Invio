@@ -169,6 +169,7 @@ function deriveLocaleFromCountryCode(countryCode?: string): string | undefined {
   if (code === "NL" || code === "BE") return "nl";
   if (code === "PT" || code === "BR") return "pt-br";
   if (code === "TR") return "tr";
+  if (code === "ES" || code === "CO") return "es-co";
   if (["AU", "CA", "GB", "IE", "NZ", "US", "AG", "BS", "BB", "BZ", "DM", "GD", "GY", "JM", "KN", "LC", "VC", "TT"].includes(code)) return "en";
 
   return undefined;
