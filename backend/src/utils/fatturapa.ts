@@ -27,7 +27,7 @@ function decimals(n: number): string {
 }
 
 function safeCurrency(biz?: BusinessSettings, invCurrency?: string): string {
-  return (invCurrency || biz?.currency || "EUR").toUpperCase();
+  return (invCurrency || biz?.currency || "MXN").toUpperCase();
 }
 
 // Validate and extract IBAN (must be 15-34 chars, alphanumeric only)

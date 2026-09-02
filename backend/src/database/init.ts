@@ -406,7 +406,7 @@ function migrateInvoicesForVoided(database: DB): void {
         customer_id TEXT REFERENCES customers(id),
         issue_date DATE NOT NULL,
         due_date DATE,
-        currency TEXT DEFAULT 'USD',
+        currency TEXT DEFAULT 'MXN',
         status TEXT CHECK(status IN ('draft','sent','complete','paid','overdue','voided')) DEFAULT 'draft',
         subtotal NUMERIC NOT NULL DEFAULT 0,
         discount_amount NUMERIC DEFAULT 0,

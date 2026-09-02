@@ -25,6 +25,10 @@ import {
 } from "../controllers/templates.ts";
 import { getDefaultTemplate } from "../controllers/templates.ts";
 import { getInvoiceLabels } from "../i18n/translations.ts";
+import {
+  formatInvoiceDate as formatDate,
+  formatInvoiceMoney as formatMoney,
+} from "../i18n/formatting.ts";
 // pdf-lib is used to embed XML attachments and tweak metadata after rendering
 
 // ---- Basic color helpers ----
@@ -150,19 +154,6 @@ function lighten(hex: string, amount = 0.85): string {
   return `#${rr}${gg}${bb}`;
 }
 
-function formatDate(d?: Date, format: string = "YYYY-MM-DD") {
-  if (!d) return undefined;
-  const date = new Date(d);
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-
-  if (format === "DD.MM.YYYY") {
-    return `${day}.${month}.${year}`;
-  }
-  // Default to YYYY-MM-DD
-  return `${year}-${month}-${day}`;
-}
 
 // Support a single stored 'logo' setting; 'logoUrl' here is a derived, inlined data URL for rendering robustness
 type WithLogo = BusinessSettings & {
@@ -199,27 +190,6 @@ function normalizeLogoUrlForRender(
   return value;
 }
 
-function formatMoney(
-  value: number,
-  currency: string,
-  numberFormat: "comma" | "period" = "comma",
-): string {
-  // Create a custom locale based on the number format preference
-  let locale: string;
-  let options: Intl.NumberFormatOptions;
-
-  if (numberFormat === "period") {
-    // European style: 1.000,00
-    locale = "de-DE"; // German locale uses period as thousands separator and comma as decimal
-    options = { style: "currency", currency };
-  } else {
-    // US style: 1,000.00
-    locale = "en-US";
-    options = { style: "currency", currency };
-  }
-
-  return new Intl.NumberFormat(locale, options).format(value);
-}
 
 async function _inlineLogoIfPossible(
   settings?: BusinessSettings,
@@ -286,7 +256,7 @@ function buildContext(
 ): TemplateContext & { logoUrl?: string; brandLogoLeft?: boolean } {
   const requestedLocale = localeOverride ?? invoice.locale ?? settings?.locale;
   const { locale: resolvedLocale, labels } = getInvoiceLabels(requestedLocale);
-  const currency = invoice.currency || settings?.currency || "USD";
+  const currency = invoice.currency || settings?.currency || "MXN";
   const companyPostalCity = formatPostalCityLine(
     settings?.companyPostalCode,
     settings?.companyCity,
@@ -334,7 +304,7 @@ function buildContext(
   );
   return {
     // Company
-    companyName: settings?.companyName || "Your Company",
+    companyName: settings?.companyName || "Tu empresa",
     companyAddress: _escapeHtmlWithBreaks(settings?.companyAddress || ""),
     companyCity: (settings?.companyCity || "").trim() || undefined,
     companyPostalCode: (settings?.companyPostalCode || "").trim() || undefined,

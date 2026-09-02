@@ -15,7 +15,7 @@
   let canDelete = $derived(hasPermission(user, "products", "delete"));
 
   function fmtMoney(cur: string | undefined, n: number) {
-    if (!cur) cur = "USD";
+    if (!cur) cur = "MXN";
     try {
       return new Intl.NumberFormat(data.localization?.numberFormat === "period" ? "de-DE" : "en-US", { style: "currency", currency: cur }).format(n || 0);
     } catch {

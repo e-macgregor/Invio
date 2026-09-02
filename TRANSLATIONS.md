@@ -1,8 +1,8 @@
 # Translation Status
 
-Last updated: 2026-03-31 10:04:24
+Last updated: 2026-09-02 16:58:12 UTC
 
-Reference locale (en): **345 keys**
+Reference locale (en): **317 keys**
 
 ## Overview
 
@@ -11,6 +11,7 @@ Reference locale (en): **345 keys**
 | pt-br | pt-br.json | 0 | 0 | ✅ |
 | nl | nl.json | 0 | 0 | ✅ |
 | de | de.json | 0 | 0 | ✅ |
+| es-mx | es-mx.json | 0 | 0 | ✅ |
 
 ## Details
 
@@ -23,6 +24,10 @@ Reference locale (en): **345 keys**
 ✅ All translations complete
 
 ### de (de.json)
+
+✅ All translations complete
+
+### es-mx (es-mx.json)
 
 ✅ All translations complete
 

@@ -318,9 +318,9 @@ export const createInvoice = (
   const dueDate = data.dueDate ? new Date(data.dueDate) : undefined;
 
   // Get default settings for currency and payment terms
-  const currency = data.currency || settings.currency || "USD";
+  const currency = data.currency || settings.currency || "MXN";
   const paymentTerms =
-    data.paymentTerms || settings.paymentTerms || "Due in 30 days";
+    data.paymentTerms || settings.paymentTerms || "Pago a 30 días";
 
   const pricesIncludeTax = data.pricesIncludeTax ?? defaultPricesIncludeTax;
   const roundingMode = data.roundingMode || defaultRoundingMode;

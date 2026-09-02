@@ -13,7 +13,7 @@ export const createInvoice = (data: Partial<Invoice>) => {
     customerId: data.customerId!,
     issueDate: data.issueDate || new Date(),
     dueDate: data.dueDate,
-    currency: data.currency || "USD",
+    currency: data.currency || "MXN",
     status: data.status || "draft",
 
     // Totals

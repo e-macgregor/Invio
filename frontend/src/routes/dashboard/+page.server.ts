@@ -47,8 +47,8 @@ export const load: PageServerLoad = async ({ locals, cookies }) => {
       >,
     ]);
 
-    const currency = (invoices[0]?.currency as string) || "USD";
-    const dateFormat = String(settings.dateFormat || "YYYY-MM-DD");
+    const currency = (invoices[0]?.currency as string) || "MXN";
+    const dateFormat = String(settings.dateFormat || "DD/MM/YYYY");
     const billed = invoices.reduce((sum, i) => sum + (i.total || 0), 0);
     const paid = invoices
       .filter((i) => i.status === "paid" || i.status === "complete")

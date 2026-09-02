@@ -33,10 +33,10 @@ export function useTranslations(): LocalizationConfig {
   // On the client, read from HTML attributes (set during SSR)
   if (typeof document !== "undefined") {
     const html = document.documentElement;
-    const htmlLang = html.lang || "en";
+    const htmlLang = html.lang || "es-MX";
     const numberFormat =
       (html.dataset.numberFormat as "comma" | "period") || "comma";
-    const dateFormat = html.dataset.dateFormat || "YYYY-MM-DD";
+    const dateFormat = html.dataset.dateFormat || "DD/MM/YYYY";
 
     const { t, messages } = createTranslator(htmlLang);
     return {

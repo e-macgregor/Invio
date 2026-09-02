@@ -17,7 +17,7 @@
   let initialSettings = $derived(data.settings || {});
   let baselineSettings = $state({} as Record<string, any>);
   let settings = $state({
-    dateFormat: "YYYY-MM-DD",
+    dateFormat: "DD/MM/YYYY",
     numberFormat: "comma",
     postalCityFormat: "auto",
     ...initialSettings,
@@ -98,7 +98,7 @@
         const latest = await latestRes.json();
         settings = {
           ...latest,
-          dateFormat: latest.dateFormat || "YYYY-MM-DD",
+          dateFormat: latest.dateFormat || "DD/MM/YYYY",
           numberFormat: latest.numberFormat || "comma",
           postalCityFormat: latest.postalCityFormat || "auto",
           allowProtectedInvoiceChanges: String(latest.allowProtectedInvoiceChanges || "false").toLowerCase() === "true",
@@ -525,6 +525,7 @@
                 <option value="nl">{t("Nederlands")}</option>
                 <option value="de">{t("Deutsch")}</option>
                 <option value="tr">{t("Türkçe")}</option>
+                <option value="es-mx">Español (México)</option>
               </select>
             </label>
             <label class="form-control"
@@ -533,6 +534,7 @@
               </div>
               <select class="select select-bordered w-full" bind:value={settings.dateFormat} disabled={!canUpdateSettings}>
                 <option value="YYYY-MM-DD">YYYY-MM-DD</option>
+                <option value="DD/MM/YYYY">DD/MM/YYYY</option>
                 <option value="DD.MM.YYYY">DD.MM.YYYY</option>
               </select>
             </label>
@@ -607,9 +609,9 @@
               <div class="mt-2 space-y-1 text-xs opacity-70">
                 <p>{t("Available placeholders")}:</p>
                 <p>
-                  <code>{"{SEQ}"}</code> (sequential, recommended),
-                  <code>{"{CSEQ}"}</code> (sequential per customer),
-                  <code>{"{CNUM}"}</code> (customer's own number),
+                  <code>{"{SEQ}"}</code> (secuencial, recomendado),
+                  <code>{"{CSEQ}"}</code> (secuencial por cliente),
+                  <code>{"{CNUM}"}</code> (número propio del cliente),
                   <code>{"{YYYY}"}</code>, <code>{"{YY}"}</code>,
                   <code>{"{MM}"}</code>, <code>{"{DD}"}</code>,
                   <code>{"{DATE}"}</code>, <code>{"{RAND4}"}</code>
@@ -620,6 +622,12 @@
         {:else if section === "xml"}
           <div class="space-y-4">
             <h2 class="text-xl font-semibold">{t("XML Export")}</h2>
+            <div role="alert" class="alert alert-warning">
+              <span>
+                <strong>Aviso fiscal para México:</strong>
+                los archivos PDF y XML de Invio no son CFDI 4.0, no se timbran y no sustituyen los servicios de un PAC ni las obligaciones ante el SAT.
+              </span>
+            </div>
             <label class="form-control"
               ><div class="label">
                 <span class="label-text">{t("XML Profile ID")}</span>

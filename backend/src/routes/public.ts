@@ -126,7 +126,7 @@ publicRoutes.get("/public/invoices/:share_token/pdf", async (c) => {
 
   // Construct BusinessSettings with sane defaults; unified single 'logo' field
   const businessSettings = {
-    companyName: settingsMap.companyName || "Your Company",
+    companyName: settingsMap.companyName || "Tu empresa",
     companyAddress: settingsMap.companyAddress || "",
     companyCity: settingsMap.companyCity || "",
     companyPostalCode: settingsMap.companyPostalCode || "",
@@ -136,12 +136,12 @@ publicRoutes.get("/public/invoices/:share_token/pdf", async (c) => {
     companyEmail: settingsMap.companyEmail || "",
     companyPhone: settingsMap.companyPhone || "",
     companyTaxId: settingsMap.companyTaxId || "",
-    currency: settingsMap.currency || "USD",
+    currency: settingsMap.currency || "MXN",
     taxLabel: settingsMap.taxLabel || undefined,
     logo: settingsMap.logo,
-    paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+    paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
     bankAccount: settingsMap.bankAccount || "",
-    paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+    paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
     defaultNotes: settingsMap.defaultNotes || "",
     locale: settingsMap.locale || undefined,
   };
@@ -247,7 +247,7 @@ publicRoutes.get("/public/invoices/:share_token/html", async (c) => {
   }
 
   const businessSettings = {
-    companyName: settingsMap.companyName || "Your Company",
+    companyName: settingsMap.companyName || "Tu empresa",
     companyAddress: settingsMap.companyAddress || "",
     companyCity: settingsMap.companyCity || "",
     companyPostalCode: settingsMap.companyPostalCode || "",
@@ -257,12 +257,12 @@ publicRoutes.get("/public/invoices/:share_token/html", async (c) => {
     companyEmail: settingsMap.companyEmail || "",
     companyPhone: settingsMap.companyPhone || "",
     companyTaxId: settingsMap.companyTaxId || "",
-    currency: settingsMap.currency || "USD",
+    currency: settingsMap.currency || "MXN",
     taxLabel: settingsMap.taxLabel || undefined,
     logo: settingsMap.logo,
-    paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+    paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
     bankAccount: settingsMap.bankAccount || "",
-    paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+    paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
     defaultNotes: settingsMap.defaultNotes || "",
     locale: settingsMap.locale || undefined,
   };
@@ -320,7 +320,7 @@ publicRoutes.get("/public/invoices/:share_token/ubl.xml", async (c) => {
   );
 
   const businessSettings = {
-    companyName: settingsMap.companyName || "Your Company",
+    companyName: settingsMap.companyName || "Tu empresa",
     companyAddress: settingsMap.companyAddress || "",
     companyCity: settingsMap.companyCity || "",
     companyPostalCode: settingsMap.companyPostalCode || "",
@@ -328,12 +328,12 @@ publicRoutes.get("/public/invoices/:share_token/ubl.xml", async (c) => {
     companyEmail: settingsMap.companyEmail || "",
     companyPhone: settingsMap.companyPhone || "",
     companyTaxId: settingsMap.companyTaxId || "",
-    currency: settingsMap.currency || "USD",
+    currency: settingsMap.currency || "MXN",
     taxLabel: settingsMap.taxLabel || undefined,
     logo: settingsMap.logo,
-    paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+    paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
     bankAccount: settingsMap.bankAccount || "",
-    paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+    paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
     defaultNotes: settingsMap.defaultNotes || "",
   };
 
@@ -374,17 +374,17 @@ publicRoutes.get("/public/invoices/:share_token/xml", async (c) => {
   );
 
   const businessSettings = {
-    companyName: settingsMap.companyName || "Your Company",
+    companyName: settingsMap.companyName || "Tu empresa",
     companyAddress: settingsMap.companyAddress || "",
     companyEmail: settingsMap.companyEmail || "",
     companyPhone: settingsMap.companyPhone || "",
     companyTaxId: settingsMap.companyTaxId || "",
-    currency: settingsMap.currency || "USD",
+    currency: settingsMap.currency || "MXN",
     taxLabel: settingsMap.taxLabel || undefined,
     logo: settingsMap.logo,
-    paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+    paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
     bankAccount: settingsMap.bankAccount || "",
-    paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+    paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
     defaultNotes: settingsMap.defaultNotes || "",
     companyCountryCode: settingsMap.companyCountryCode || "",
   };

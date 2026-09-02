@@ -43,7 +43,7 @@ export const handle: Handle = async ({ event, resolve }) => {
   const response = await resolve(event, {
     transformPageChunk: ({ html }) => {
       return html
-        .replace("%lang%", event.locals.localization.locale.split("-")[0])
+        .replace("%lang%", event.locals.localization.locale)
         .replace("%numberFormat%", event.locals.localization.numberFormat)
         .replace("%dateFormat%", event.locals.localization.dateFormat);
     },

@@ -36,6 +36,9 @@ WORKDIR /app
 
 # Backend
 COPY backend ./backend
+RUN cd /app/backend && deno cache \
+    src/app.ts \
+    https://deno.land/x/bcrypt@v0.4.1/src/worker.ts
 
 # Frontend build output
 COPY --from=frontend-builder /app/frontend/build ./frontend/build

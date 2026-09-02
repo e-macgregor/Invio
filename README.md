@@ -14,6 +14,19 @@
 
 ------
 
+## 🇲🇽 Invio México
+
+Este fork adapta Invio para México:
+
+- interfaz en español de México (`es-MX`);
+- moneda predeterminada `MXN`;
+- fechas `DD/MM/YYYY`;
+- terminología mexicana, como RFC e IVA;
+- documentos HTML y PDF localizados.
+
+> [!IMPORTANT]
+> Invio no genera CFDI 4.0, no timbra comprobantes y no sustituye a un Proveedor Autorizado de Certificación (PAC) ni el cumplimiento de obligaciones ante el SAT. Los archivos PDF, UBL, Factur-X y FatturaPA son documentos administrativos o formatos de otros regímenes.
+
 ## 🌟 Why Invio?
 
 - Zero Bloat - Create an invoice, share a link, get paid. No menus to dig through, no setup wizards, no fluff.

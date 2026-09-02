@@ -28,7 +28,7 @@ CREATE TABLE invoices (
   customer_id TEXT REFERENCES customers(id),
   issue_date DATE NOT NULL,
   due_date DATE,
-  currency TEXT DEFAULT 'USD',
+  currency TEXT DEFAULT 'MXN',
   status TEXT CHECK(status IN ('draft', 'sent', 'complete', 'paid', 'overdue', 'voided')) DEFAULT 'draft',
   
   -- Totals
@@ -84,22 +84,28 @@ CREATE TABLE templates (
 
 -- Insert default business settings
 INSERT OR IGNORE INTO settings (key, value) VALUES 
-  ('companyName', 'Your Company'),
-  ('companyAddress', '123 Business St, City, State 12345'),
-  ('companyEmail', 'contact@yourcompany.com'),
-  ('companyPhone', '+1 (555) 123-4567'),
-  ('companyTaxId', 'TAX123456789'),
-  ('currency', 'USD'),
+  ('companyName', 'Tu empresa'),
+  ('companyAddress', ''),
+  ('companyEmail', ''),
+  ('companyPhone', ''),
+  ('companyTaxId', ''),
+  ('companyCountryCode', 'MX'),
+  ('currency', 'MXN'),
   ('logo', ''),
-  ('paymentMethods', 'Bank Transfer, PayPal, Credit Card'),
-  ('bankAccount', 'Account: 1234567890, Routing: 987654321'),
-  ('paymentTerms', 'Due in 30 days'),
-  ('defaultNotes', 'Thank you for your business!'),
+  ('paymentMethods', 'Transferencia bancaria'),
+  ('bankAccount', ''),
+  ('paymentTerms', 'Pago a 30 días'),
+  ('defaultNotes', 'Gracias por tu preferencia.'),
+  ('locale', 'es-mx'),
+  ('dateFormat', 'DD/MM/YYYY'),
+  ('numberFormat', 'comma'),
+  ('postalCityFormat', 'postal-city'),
+  ('taxLabel', 'IVA'),
   ('allowProtectedInvoiceChanges', 'false');
 
 -- Insert a simple default template
 INSERT OR IGNORE INTO templates (id, name, html, is_default) VALUES 
-('default-template', 'Default Invoice Template', '<h1>Invoice #{{invoiceNumber}}</h1><p>Total: {{currency}} {{total}}</p>', TRUE);
+('default-template', 'Plantilla de factura', '<h1>Factura {{invoiceNumber}}</h1><p>Total: {{currency}} {{total}}</p>', TRUE);
 
 -- Index for performance
 CREATE INDEX IF NOT EXISTS idx_invoices_number ON invoices(invoice_number);

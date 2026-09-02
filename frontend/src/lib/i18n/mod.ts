@@ -4,6 +4,7 @@ import deMessages from "./locales/de.json" with { type: "json" };
 import ptMessages from "./locales/pt-br.json" with { type: "json" };
 import trMessages from "./locales/tr.json" with { type: "json" };
 import esMessages from "./locales/es-co.json" with { type: "json" };
+import esMxMessages from "./locales/es-mx.json" with { type: "json" };
 
 export type UiMessages = Record<string, string>;
 export type TranslateParams = Record<string, string | number>;
@@ -15,9 +16,10 @@ const catalogs: Record<string, UiMessages> = {
   pt: ptMessages as UiMessages,
   tr: trMessages as UiMessages,
   es: esMessages as UiMessages,
+  "es-mx": esMxMessages as UiMessages,
 };
 
-const DEFAULT_LOCALE = "en";
+const DEFAULT_LOCALE = "es-mx";
 
 function normalizeLocale(locale?: string): string {
   if (!locale) return DEFAULT_LOCALE;
@@ -70,8 +72,8 @@ export type LocalizationConfig = {
 export const DEFAULT_LOCALIZATION: LocalizationConfig = {
   ...createTranslator(DEFAULT_LOCALE),
   numberFormat: "comma",
-  dateFormat: "YYYY-MM-DD",
-  postalCityFormat: "auto",
+  dateFormat: "DD/MM/YYYY",
+  postalCityFormat: "postal-city",
 };
 
 export function resolveLocalization(
@@ -85,11 +87,11 @@ export function resolveLocalization(
   const df =
     typeof dateFormat === "string" && dateFormat.trim()
       ? dateFormat
-      : "YYYY-MM-DD";
+      : "DD/MM/YYYY";
   const pcf =
     postalCityFormat === "city-postal" || postalCityFormat === "postal-city"
       ? postalCityFormat
-      : "auto";
+      : "postal-city";
   return {
     locale: normalized,
     messages,

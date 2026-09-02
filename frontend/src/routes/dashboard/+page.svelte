@@ -13,7 +13,7 @@
   let canViewCustomers = $derived(user?.isAdmin || user?.permissions?.some((p) => p.resource === "customers" && p.action === "read"));
 
   function fmtMoney(n: number) {
-    const cur = data.money?.currency || "USD";
+    const cur = data.money?.currency || "MXN";
     try {
       const locale = numberFormat === "period" ? "de-DE" : "en-US";
       return new Intl.NumberFormat(locale, {

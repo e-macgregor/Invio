@@ -17,7 +17,7 @@
     </label>
     <label class="form-control">
       <div class="label"><span class="label-text">{t("Currency")}</span></div>
-      <input type="text" class="input input-bordered w-full" bind:value={settings.currency} disabled={!canUpdateSettings} placeholder="USD" />
+      <input type="text" class="input input-bordered w-full" bind:value={settings.currency} disabled={!canUpdateSettings} placeholder="MXN" />
     </label>
   </div>
 

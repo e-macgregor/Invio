@@ -49,7 +49,7 @@ function decimals(n: number): string {
 }
 
 function safeCurrency(biz: BusinessSettings, invCurrency?: string): string {
-  return (invCurrency || biz.currency || "USD").toUpperCase();
+  return (invCurrency || biz.currency || "MXN").toUpperCase();
 }
 
 function splitAddress(addr?: string): {

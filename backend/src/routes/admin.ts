@@ -276,7 +276,9 @@ function normalizeLocaleSettingPayload(data: Record<string, unknown>) {
   if (Object.prototype.hasOwnProperty.call(data, "dateFormat")) {
     const rawDateFormat = String(data.dateFormat ?? "").trim();
     (data as Record<string, unknown>).dateFormat =
-      rawDateFormat === "DD.MM.YYYY" ? "DD.MM.YYYY" : "YYYY-MM-DD";
+      rawDateFormat === "DD/MM/YYYY" || rawDateFormat === "DD.MM.YYYY"
+        ? rawDateFormat
+        : "YYYY-MM-DD";
   }
 }
 
@@ -797,7 +799,7 @@ adminRoutes.post(
       invoiceNumber: "INV-2025-001",
       issueDate: "2025-08-26",
       dueDate: "2025-09-25",
-      currency: "USD",
+      currency: "MXN",
       status: "draft",
       customerName: "John Doe",
       customerEmail: "john@example.com",
@@ -1467,7 +1469,7 @@ adminRoutes.get(
     }
 
     const businessSettings = {
-      companyName: settingsMap.companyName || "Your Company",
+      companyName: settingsMap.companyName || "Tu empresa",
       companyAddress: settingsMap.companyAddress || "",
       companyCity: settingsMap.companyCity || "",
       companyPostalCode: settingsMap.companyPostalCode || "",
@@ -1476,13 +1478,13 @@ adminRoutes.get(
       companyEmail: settingsMap.companyEmail || "",
       companyPhone: settingsMap.companyPhone || "",
       companyTaxId: settingsMap.companyTaxId || "",
-      currency: settingsMap.currency || "USD",
+      currency: settingsMap.currency || "MXN",
       taxLabel: settingsMap.taxLabel || undefined,
       logo: settingsMap.logo,
       // brandLayout removed; always treating as logo-left in rendering
-      paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+      paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
       bankAccount: settingsMap.bankAccount || "",
-      paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+      paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
       defaultNotes: settingsMap.defaultNotes || "",
       locale: settingsMap.locale || undefined,
     };
@@ -1558,7 +1560,7 @@ adminRoutes.get(
     }
 
     const businessSettings = {
-      companyName: settingsMap.companyName || "Your Company",
+      companyName: settingsMap.companyName || "Tu empresa",
       companyAddress: settingsMap.companyAddress || "",
       companyCity: settingsMap.companyCity || "",
       companyPostalCode: settingsMap.companyPostalCode || "",
@@ -1567,13 +1569,13 @@ adminRoutes.get(
       companyEmail: settingsMap.companyEmail || "",
       companyPhone: settingsMap.companyPhone || "",
       companyTaxId: settingsMap.companyTaxId || "",
-      currency: settingsMap.currency || "USD",
+      currency: settingsMap.currency || "MXN",
       taxLabel: settingsMap.taxLabel || undefined,
       logo: settingsMap.logo,
       // brandLayout removed; always treating as logo-left in rendering
-      paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+      paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
       bankAccount: settingsMap.bankAccount || "",
-      paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+      paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
       defaultNotes: settingsMap.defaultNotes || "",
       locale: settingsMap.locale || undefined,
     };
@@ -1708,7 +1710,7 @@ adminRoutes.post(
     }
 
     const businessSettings = {
-      companyName: settingsMap.companyName || "Your Company",
+      companyName: settingsMap.companyName || "Tu empresa",
       companyAddress: settingsMap.companyAddress || "",
       companyCity: settingsMap.companyCity || "",
       companyPostalCode: settingsMap.companyPostalCode || "",
@@ -1717,12 +1719,12 @@ adminRoutes.post(
       companyEmail: settingsMap.companyEmail || "",
       companyPhone: settingsMap.companyPhone || "",
       companyTaxId: settingsMap.companyTaxId || "",
-      currency: settingsMap.currency || "USD",
+      currency: settingsMap.currency || "MXN",
       taxLabel: settingsMap.taxLabel || undefined,
       logo: settingsMap.logo,
-      paymentMethods: settingsMap.paymentMethods || "Bank Transfer",
+      paymentMethods: settingsMap.paymentMethods || "Transferencia bancaria",
       bankAccount: settingsMap.bankAccount || "",
-      paymentTerms: settingsMap.paymentTerms || "Due in 30 days",
+      paymentTerms: settingsMap.paymentTerms || "Pago a 30 días",
       defaultNotes: settingsMap.defaultNotes || "",
       locale: settingsMap.locale || undefined,
     };
@@ -1857,18 +1859,18 @@ adminRoutes.get(
     );
 
     const businessSettings = {
-      companyName: map.companyName || "Your Company",
+      companyName: map.companyName || "Tu empresa",
       companyAddress: map.companyAddress || "",
       companyCity: map.companyCity || "",
       companyPostalCode: map.companyPostalCode || "",
       companyEmail: map.companyEmail || "",
       companyPhone: map.companyPhone || "",
       companyTaxId: map.companyTaxId || "",
-      currency: map.currency || "USD",
+      currency: map.currency || "MXN",
       logo: map.logo,
-      paymentMethods: map.paymentMethods || "Bank Transfer",
+      paymentMethods: map.paymentMethods || "Transferencia bancaria",
       bankAccount: map.bankAccount || "",
-      paymentTerms: map.paymentTerms || "Due in 30 days",
+      paymentTerms: map.paymentTerms || "Pago a 30 días",
       defaultNotes: map.defaultNotes || "",
       companyCountryCode: map.companyCountryCode || "",
     };
@@ -1913,18 +1915,18 @@ adminRoutes.get(
     );
 
     const businessSettings = {
-      companyName: map.companyName || "Your Company",
+      companyName: map.companyName || "Tu empresa",
       companyAddress: map.companyAddress || "",
       companyCity: map.companyCity || "",
       companyPostalCode: map.companyPostalCode || "",
       companyEmail: map.companyEmail || "",
       companyPhone: map.companyPhone || "",
       companyTaxId: map.companyTaxId || "",
-      currency: map.currency || "USD",
+      currency: map.currency || "MXN",
       logo: map.logo,
-      paymentMethods: map.paymentMethods || "Bank Transfer",
+      paymentMethods: map.paymentMethods || "Transferencia bancaria",
       bankAccount: map.bankAccount || "",
-      paymentTerms: map.paymentTerms || "Due in 30 days",
+      paymentTerms: map.paymentTerms || "Pago a 30 días",
       defaultNotes: map.defaultNotes || "",
       companyCountryCode: map.companyCountryCode || "",
     };

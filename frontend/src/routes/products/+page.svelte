@@ -15,7 +15,7 @@
   }
 
   function fmtMoney(cur: string | undefined, n: number) {
-    if (!cur) cur = "USD";
+    if (!cur) cur = "MXN";
     try {
       const locale = numberFormat === "period" ? "de-DE" : "en-US";
       return new Intl.NumberFormat(locale, {
