@@ -1,44 +1,34 @@
-name: Check translation files 
+name: Check Mexican Spanish translations
 
 on:
   workflow_dispatch:
   push:
     branches: [main]
     paths:
-      - frontend/src/lib/i18n/locales/*
+      - frontend/src/lib/i18n/locales/en.json
+      - frontend/src/lib/i18n/locales/es-mx.json
+      - .github/scripts/check_es_mx.py
+      - .github/workflows/translations.yml
   pull_request:
     branches: [main]
     paths:
-      - frontend/src/lib/i18n/locales/*
+      - frontend/src/lib/i18n/locales/en.json
+      - frontend/src/lib/i18n/locales/es-mx.json
+      - .github/scripts/check_es_mx.py
+      - .github/workflows/translations.yml
+
+permissions:
+  contents: read
 
 jobs:
   check_translations:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
-    
     steps:
       - name: Checkout
         uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
-      - name: Setup python
+      - name: Setup Python
         uses: actions/setup-python@v6
         with:
-          python-version: '3.13' 
-      - name: Sort translation files by key
-        run: | 
-          cd frontend/src/lib/i18n/locales
-          for file in *.json; do
-            jq --sort-keys . "$file" > "$file.tmp" 
-            if ! diff -q "$file" "$file.tmp" > /dev/null; then
-              echo "Sorted $file"
-            fi
-            mv "$file.tmp" "$file"
-          done
-      - name: run check 
-        run: python .github/scripts/translations.py
-      - uses: stefanzweifel/git-auto-commit-action@v7
-        with:
-          commit_message: Update missing translations, sort translations
-          file_pattern: "frontend/src/lib/i18n/locales/*.json TRANSLATIONS.md"
+          python-version: "3.13"
+      - name: Validate es-MX catalog
+        run: python .github/scripts/check_es_mx.py
